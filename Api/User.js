@@ -14,5 +14,14 @@ route.post('/', async (req, res)=>{
   res.json(userModel);
 });
 
+route.get('/', async (req, res) => {
+  let userRes = await User.find({});
+  res.json(userRes);
+});
+
+route.put('/', async (req, res) => {
+  let userRes = await User.updateMany({firstName: req.body.firstName}, {firstName: req.body.updatedFirstName});
+  res.json(userRes);
+});
 
 module.exports = route;
